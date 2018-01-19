@@ -1,4 +1,4 @@
-## Weblogic Component Vulnerability /wls-wsat/CoordinatorPortType wls-wsat.war
+## Weblogic Vulnerability /wls-wsat/CoordinatorPortType wls-wsat.war
 
 It was the day after new year. In one morning all of our java instances had been killed. We first suspected there was a manual reboot. 
 So we started our application server as usual. We first started our node managers. Then started our admin server and our java applications so on.
