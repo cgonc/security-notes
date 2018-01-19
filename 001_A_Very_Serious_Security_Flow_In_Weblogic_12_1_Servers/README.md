@@ -1,10 +1,11 @@
 ## Weblogic Component Vulnerability /wls-wsat/CoordinatorPortType wls-wsat.war
 
-It was the day after new year. In one morning all of our java instances has been killed. We first suspected there was a manual reboot. 
-So we started our application server as usual. We first started our node managers. Then started our admin server and our java applications.
-While we were working on these jobs, suddenly in one machine all of our java processes had been killed. We immediately informed our product owner saying that there could be a manual intervention somewhere else even if we could not find the logged in user. We also suspected that the ssh user had been compromised then changed the password with a relief.
+It was the day after new year. In one morning all of our java instances had been killed. We first suspected there was a manual reboot. 
+So we started our application server as usual. We first started our node managers. Then started our admin server and our java applications so on.
 
-After two hours everything went normally. Then the ultimate catastrophic event happened. Our java instances had been killed again. When we check the processes there were two java processes which eat up the cpu like a hungry pig. We decided not to kill these processes but examine them. When we inspect it with netstat we saw that they send packages to the following IP address.
+While we were working on these jobs, suddenly in one machine all of our java processes had been killed again. We immediately informed our product owner saying that there could be a manual intervention somewhere else even if we could not find the logged in user. We also suspected that the ssh user had been compromised then changed the password with a relief.
+
+Everything went normally for two hours. Then the ultimate catastrophic event happened. Our java instances had been killed again. When we check the processes there were two java processes which eat up the cpu like a hungry pig. We decided not to kill these processes but examine them. When we inspect it with netstat we saw that they send packages to the following IP address.
 
 ```
 http://145.239.0.84/
@@ -73,7 +74,7 @@ Connection: close
 ```
 
 The soap request has been executed ending with creating a file named a_random_file.txt with ls -l information in it. The request mainly creates a ProcessBuilder object and executes it!!!
-So only with a HTTP request, I can execute any command on the remote server!!!
+So only with an HTTP request, I can execute any command on the remote server!!!
 
 We were actually happy when we discovered that. 
 
