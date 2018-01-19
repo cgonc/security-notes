@@ -1,4 +1,4 @@
-# Weblogic Component Vulnerability /wls-wsat/CoordinatorPortType wls-wsat.war
+## Weblogic Component Vulnerability /wls-wsat/CoordinatorPortType wls-wsat.war
 
 It was the day after new year. In one morning all of our java instances has been killed. We first suspected there was a manual reboot. 
 So we started our application server as usual. We first started our node managers. Then started our admin server and our java applications.
@@ -72,7 +72,7 @@ Connection: close
 
 ```
 
-The soap request has been executed. The request mainly creates a ProcessBuilder object and executes it!!!
+The soap request has been executed ending with creating a file named a_random_file.txt with ls -l information in it. The request mainly creates a ProcessBuilder object and executes it!!!
 So only with a HTTP request, I can execute any command on the remote server!!!
 
 We were actually happy when we discovered that. 
@@ -83,5 +83,5 @@ Our solution was to delete the responsible war. You can find it with the followi
 locate wls-wsat.war
 ```
 
-Just delete it. Do not spend time for patching your useless weblogic server. 
+Just delete it. Do not spend time for patching your useless Weblogic server. 
 Weblogic sucks!!!
